@@ -1,4 +1,5 @@
 # WebPayment
+[![Build Status](https://travis-ci.org/superuserdev/WebPayment.svg?branch=master)](https://travis-ci.org/superuserdev/WebPayment)
 - - -
 Progressive enhancement for the Web Payment API
 
