@@ -29,7 +29,7 @@
   },
   "scripts": {
     "test": "eslint ."
-},
+  },
   "devDependencies": {
     "eslint": "^3.10.0",
     "eslint-plugin-async-await": "0.0.0",
