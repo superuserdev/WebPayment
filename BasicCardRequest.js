@@ -2,8 +2,8 @@
  * @see https://developer.mozilla.org/en-US/docs/Web/API/BasicCardRequest
  */
 export default class BasicCardRequest {
-	constructor() {
-		//
+	constructor(paymentRequest) {
+		console.log(paymentRequest);
 	}
 
 	get supportedNetworks() {

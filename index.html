@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Web Payment API</title>
+		<script type="module">
+			import 'https://shgysk8zer0.github.io/std-js/shims.js';
+			import 'https://shgysk8zer0.github.io/std-js/deprefixer.js';
+			import PaymentRequest from './PaymentRequest.js';
+			import {$, ready} from 'https://shgysk8zer0.github.io/js/std-js/functions.js';
+
+			ready().then(async () => {
+				$('#buy').click(async () => {
+					try {
+						const paymentRequest = new PaymentRequest([], {id: 'foo'}, {});
+						const paymentResponse = await paymentRequest.show();
+						console.log({paymentRequest, paymentResponse});
+					} catch(error) {
+						console.error(error);
+					}
+				});
+			});
+		</script>
+		<style>
+			@import url("https://shgysk8zer0.github.io/css/core-css/viewport.css");
+			@import url("https://shgysk8zer0.github.io/css/core-css/element.css");
+			@import url("https://shgysk8zer0.github.io/css/core-css/class-rules.css");
+			@import url("https://shgysk8zer0.github.io/css/core-css/rem.css");
+
+			:root {
+				--button-background: #455DB1;
+				--button-active-background: #224DE7;
+				--button-border: none;
+				--button-radius: 4px;
+				--alt-color: #fefefe;
+			}
+		</style>
+	</head>
+	<body>
+		<button type="button" id="buy">Buy Now!</button>
+	</body>
+</html>
