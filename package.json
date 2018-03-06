@@ -1,0 +1,38 @@
+{
+  "name": "webpayment",
+  "version": "0.1.0",
+  "description": "Progressive enhancement for the Web Payment API",
+  "private": true,
+  "keywords": [
+    "ECMAScript",
+    "Web Payment API",
+    "PaymentRequest",
+    "progressive enhancement"
+  ],
+  "author": {
+    "name": "Chris Zuber",
+    "email": "chris@chriszuber.com",
+    "url": "https://shgysk8zer0.github.io"
+  },
+  "contributors": [],
+  "homepage": "",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superuserdev/WebPayment"
+  },
+  "bugs": {
+    "url": "https://github.com/superuserdev/WebPayment/issues"
+  },
+  "engines": {
+    "npm": ">=3.5"
+  },
+  "scripts": {
+    "test": "eslint ."
+},
+  "devDependencies": {
+    "eslint": "^3.10.0",
+    "eslint-plugin-async-await": "0.0.0",
+    "eslint-plugin-babel": "^4.1.2"
+  }
+}
