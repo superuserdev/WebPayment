@@ -1,0 +1,45 @@
+{
+    "requestId": "********-****-****-****-************",
+    "methodName": "basic-card",
+    "details": {
+        "billingAddress": {
+            "addressLine": [
+                "address"
+            ],
+            "city": "city",
+            "country": "US",
+            "dependentLocality": "",
+            "languageCode": "",
+            "organization": "organization",
+            "phone": "+15555555555",
+            "postalCode": "12345",
+            "recipient": "givenName additionalName familyName",
+            "region": "state",
+            "sortingCode": ""
+        },
+        "cardNumber": "**********",
+        "cardSecurityCode": "***",
+        "cardholderName": "givenName familyName",
+        "expiryMonth": "mm",
+        "expiryYear": "yyyy"
+    },
+    "shippingAddress": {
+        "country": "US",
+        "addressLine": [
+            "streetAddress"
+        ],
+        "region": "state",
+        "city": "city",
+        "dependentLocality": "",
+        "postalCode": "12345",
+        "sortingCode": "",
+        "languageCode": "en",
+        "organization": "organization",
+        "recipient": "givenName additionalName familyName",
+        "phone": "+15555555555"
+    },
+    "shippingOption": "standard",
+    "payerName": "givenName additionalName familyName",
+    "payerEmail": "user@example.com",
+    "payerPhone": "+15555555555"
+}
