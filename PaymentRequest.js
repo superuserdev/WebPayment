@@ -6,11 +6,12 @@ import {$, css} from './functions.js';
 import PaymentResponse from './PaymentResponse.js';
 import BasicCardRequest from './BasicCardRequest.js';
 import PaymentAddress from './PaymentAddress.js';
+import PaymentRequestUpdateEvent from './PaymentRequestUpdateEvent.js';
 
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest
  */
-export default class PaymentRequest {
+export default class PaymentRequest extends EventTarget {
 	/**
 	* @see https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/PaymentRequest
 	*/
@@ -27,6 +28,7 @@ export default class PaymentRequest {
 		requestShipping   = false,
 		shippingType      = 'shipping',
 	} = {}) {
+		super();
 		this._total = total;
 		this._requestId = id;
 		this._displayItems = displayItems;
@@ -104,7 +106,7 @@ export default class PaymentRequest {
 		throw new DOMException('Request cancelled');
 	}
 
-	canMakePayment() {
+	async canMakePayment() {
 		return true;
 	}
 }
