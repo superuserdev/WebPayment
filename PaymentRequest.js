@@ -29,6 +29,8 @@ export default class PaymentRequest extends EventTarget {
 		shippingType      = 'shipping',
 	} = {}) {
 		super();
+		this.shippingaddresschange = null;
+		this.shippingoptionchange = null;
 		this._total = total;
 		this._requestId = id;
 		this._displayItems = displayItems;
