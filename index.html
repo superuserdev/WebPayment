@@ -6,7 +6,7 @@
 		<script type="module">
 			import 'https://shgysk8zer0.github.io/js/std-js/shims.js';
 			import 'https://shgysk8zer0.github.io/js/std-js/deprefixer.js';
-			//import PaymentRequest from './PaymentRequest.js';
+			import PaymentRequest from './PaymentRequest.js';
 			import {$, ready} from 'https://shgysk8zer0.github.io/js/std-js/functions.js';
 
 			const supportedInstruments = [{
@@ -54,6 +54,31 @@
 			};
 
 			ready().then(async () => {
+				const template = document.getElementById('payment').content.cloneNode(true);
+				const dialog = template.firstElementChild;
+
+				$('form', dialog).forEach(form => {
+					form.addEventListener('submit', event => {
+						event.preventDefault();
+						const form = new FormData(event.target);
+						const data = {};
+						for (const [key, value] of form) {
+							data[key] = value;
+						}
+						console.log(data);
+					});
+				});
+
+				$('fieldset', dialog).forEach(fieldset => {
+					fieldset.disabled = false;
+					fieldset.hidden = false;
+				});
+				dialog.style.setProperty('border', 'none');
+				document.body.append(dialog);
+				dialog.showModal();
+				const paymentRequest = new PaymentRequest(supportedInstruments, details, options);
+				paymentRequest.canMakePayment().then(console.log);
+				return;
 				$('#buy').click(async () => {
 					try {
 						console.clear();
@@ -114,5 +139,43 @@
 	</head>
 	<body>
 		<button type="button" id="buy">Buy Now!</button>
+		<template id="payment">
+			<dialog id="payment-dialog">
+				<div id="order-summary">
+				<form name="payment" action="/" method="POST">
+					<fieldset disabled="" hidden="">
+						<legend>Shipping address</legend>
+						<div>
+							<label for="shippingAddress-recipient">Name*</label>
+							<input type="name" name="shippingAddress[recipient]" id="shippingAddress-recipient" autocomplete="name" placeholder="Full name" required=""/>
+						</div>
+						<div>
+							<input type="text" name="shippingAddress[addressLine][]" autocomplete="address-line2" placeholder="123 Some Street" required="" /><br />
+							<input type="text" name="shippingAddress[addressLine][]" autocomplete="address-line3" placeholder="P.O. Box 789" />
+						</div>
+					</fieldset>
+					<fieldset disabled="" hidden="">
+						<legend>Shipping method</legend>
+					</fieldset>
+					<fieldset>
+						<legend>Payment method</legend>
+						<div>
+							<input type="text" name="details[cardholderName]" autcomplete="cc-name" required ="" />
+						</div>
+						<div>
+							<input type="number" min="1000000000" max="9999999999999" name="details[cardNumber]" autocomplete="cc-number" required="" />
+						</div>
+						<div>
+							<input type="month" name="details[expiry]" autocomplete="cc-exp" required="" />
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Contact info</legend>
+					</fieldset>
+					<button type="submit">Pay</button>
+					<button type="button">Cancel</button>
+				</form>
+			</dialog>
+		</template>
 	</body>
 </html>
