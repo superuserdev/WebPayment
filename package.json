@@ -28,7 +28,8 @@
     "npm": ">=3.5"
   },
   "scripts": {
-    "test": "eslint ."
+    "test": "eslint .",
+    "start": "python -m SimpleHTTPServer 8000"
   },
   "devDependencies": {
     "eslint": "^3.10.0",
