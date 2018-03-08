@@ -8,6 +8,10 @@ import BasicCardRequest from './BasicCardRequest.js';
 import PaymentAddress from './PaymentAddress.js';
 import PaymentRequestUpdateEvent from './PaymentRequestUpdateEvent.js';
 
+const supportedMethods = [
+	'basic-card',
+];
+
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest
  */
@@ -29,6 +33,10 @@ export default class PaymentRequest extends EventTarget {
 		shippingType      = 'shipping',
 	} = {}) {
 		super();
+		this._methodData = methodData.map(data => {
+			data.supportedMethods = data.supportedMethods.split(',').map(method => method.trim());
+			return data;
+		});
 		this.shippingaddresschange = null;
 		this.shippingoptionchange = null;
 		this._total = total;
@@ -109,6 +117,6 @@ export default class PaymentRequest extends EventTarget {
 	}
 
 	async canMakePayment() {
-		return true;
+		return this._methodData.some(data => data.supportedMethods.some(method => supportedMethods.includes(method)));
 	}
 }
